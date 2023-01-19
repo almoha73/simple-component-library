@@ -1,11 +1,27 @@
-import React from "react";
-import { TextInput } from "../lib";
+import React, { useState } from "react";
+import { Modal } from "../lib";
+import  GlobalStyle  from "../lib/components/utils/GlobalStyle";
 
-const App = () => (
-  <div style={{ width: 640, margin: "15px auto" }}>
-    <h1>Hello React</h1>
-    <TextInput label="Email Address" placeholder="name@example.com" />
-  </div>
-);
+const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div>
+      <GlobalStyle />
+      <button
+        onClick={() => setIsOpen(true)}
+        className="openModalBtn"
+        style={{
+          padding: "10px",
+          margin: "50px 50px",
+          borderRadius: "5px",
+          border: "none",
+        }}
+      >
+        Open Modal
+      </button>
+      {isOpen && <Modal setIsOpen={setIsOpen} />}
+    </div>
+  );
+};
 
 export default App;
